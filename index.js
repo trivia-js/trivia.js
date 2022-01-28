@@ -99,12 +99,13 @@ async function verifyAnswer(answer) {
     const spinner = createSpinner('Checking answer...').start();
     await sleep();
     if (answer === decode(questionsData['results'][currentQuestion]['correct_answer'])) {
-        spinner.success({ text: 'Nice work. Your answer is correct\n--------------------------------\n\n\n\n' });
+        spinner.success({ text: 'Nice work. Your answer is correct\n--------------------------------\n' });
         correctQuestions++;
     } else {
-        spinner.error({ text: 'Wrong answer. The correct answer was ' + questionsData['results'][currentQuestion]['correct_answer'] + '\n--------------------------------\n\n\n\n' });
+        spinner.error({ text: 'Wrong answer. The correct answer was ' + questionsData['results'][currentQuestion]['correct_answer'] + '\n--------------------------------\n' });
     }
     currentQuestion++;
+    console.log(chalk.yellow('Score: ' + correctQuestions + '/' + questions + '\n\n\n'));
 }
 
 async function start() {
