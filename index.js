@@ -15,7 +15,6 @@ let categoryValue;
 let questionsDifficulty;
 let currentQuestion = 0;
 let correctQuestions = 0;
-let wrongQuestions = 0;
 
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 
@@ -103,7 +102,6 @@ async function verifyAnswer(answer) {
         correctQuestions++;
     } else {
         spinner.error({ text: 'Wrong answer. The correct answer was ' + questionsData['results'][currentQuestion]['correct_answer'] + '\n--------------------------------\n\n\n\n' });
-        wrongQuestions++;
     }
     currentQuestion++;
 }
