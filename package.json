@@ -1,6 +1,6 @@
 {
     "name": "cmdquiz",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Trivia CLI tool",
     "type": "module",
     "repository": {
