@@ -15,6 +15,7 @@ let categoryValue;
 let questionsDifficulty;
 let currentQuestion = 0;
 let correctQuestions = 0;
+let questions = 0;
 
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 
@@ -128,7 +129,6 @@ async function handleCategory(category) {
     const spinner = createSpinner('').start();
     spinner.success(`You selected ${category}`);
     categoryValue = getValue(category);
-    await sleep();
 }
 
 async function getCategory() {
@@ -182,7 +182,7 @@ async function getDiffuculty() {
 }
 
 async function initTrivia() {
-    const spinner = createSpinner('Fetching questions...').start();
+    const spinner = createSpinner('Fetching questions...\n').start();
     await fetchQuestions(categoryValue, questionsDifficulty, 10);
     spinner.success('');
     question();
@@ -194,6 +194,8 @@ async function resetQuestions() {
 }
 
 async function question() {
+    questions++;
+    console.log(chalk.green('Question ' + questions + ' ->'));
     let choices = questionsData['results'][currentQuestion]['incorrect_answers'];
     choices.push(questionsData['results'][currentQuestion]['correct_answer']);
     for (let i = 0; i < choices.length; i++) {
