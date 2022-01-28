@@ -212,6 +212,7 @@ async function question() {
     question();
 }
 
+console.clear();
 await start();
 await prompt();
 await getCategory();
