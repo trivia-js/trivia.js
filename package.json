@@ -5,7 +5,7 @@
     "type": "module",
     "repository": {
         "type": "git",
-        "url": "https://github.com/IceCruelStuff/trivia"
+        "url": "https://github.com/triviajs/trivia.js"
     },
     "main": "index.js",
     "scripts": {
