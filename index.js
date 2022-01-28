@@ -98,7 +98,7 @@ function getValue(category) {
 async function verifyAnswer(answer) {
     const spinner = createSpinner('Checking answer...').start();
     await sleep();
-    if (answer === questionsData['results'][currentQuestion]['correct_answer']) {
+    if (answer === decode(questionsData['results'][currentQuestion]['correct_answer'])) {
         spinner.success({ text: 'Nice work. Your answer is correct\n--------------------------------\n\n\n\n' });
         correctQuestions++;
     } else {
@@ -198,6 +198,9 @@ async function resetQuestions() {
 async function question() {
     let choices = questionsData['results'][currentQuestion]['incorrect_answers'];
     choices.push(questionsData['results'][currentQuestion]['correct_answer']);
+    for (let i = 0; i < choices.length; i++) {
+        choices[i] = decode(choices[i]);
+    }
     choices.sort();
     const answers = await inquirer.prompt({
         name: 'question',
