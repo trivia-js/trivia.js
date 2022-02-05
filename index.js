@@ -102,7 +102,7 @@ async function verifyAnswer(answer) {
         spinner.success({ text: 'Nice work. Your answer is correct\n--------------------------------\n' });
         correctQuestions++;
     } else {
-        spinner.error({ text: 'Wrong answer. The correct answer was ' + questionsData['results'][currentQuestion]['correct_answer'] + '\n--------------------------------\n' });
+        spinner.error({ text: 'Wrong answer. The correct answer was ' + chalk.yellow(decode(questionsData['results'][currentQuestion]['correct_answer'])) + '\n--------------------------------\n' });
     }
     currentQuestion++;
     console.log(chalk.yellow('Score: ' + correctQuestions + '/' + questions + '\n\n\n'));
